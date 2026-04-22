@@ -1239,21 +1239,7 @@ function updateEverything() {
   else
     document.getElementById("hr").className = "hr2";
   
-  let a = Math.round(game.frames);
-  let h = Math.floor(a/90000);
-  let m = Math.floor(a/1500) % 60;
-  let s = Math.floor(a/25) % 60;
-  let sm = "";
-  let ss = "";
-  if(m < 10)
-    sm += "0";
-  if(s < 10)
-    ss += "0";
-  sm += m;
-  ss += s;
-  document.getElementById("timePlayed").innerHTML = h + ":" + sm + ":" + ss;
-  
-  let a2 = Math.round(game.speedrunTime);
+    let a2 = Math.round(game.speedrunTime);
   let h2 = Math.floor(a2/90000);
   let m2 = Math.floor(a2/1500) % 60;
   let s2 = Math.floor(a2/25) % 60;
@@ -1261,42 +1247,26 @@ function updateEverything() {
   let sm2 = "";
   let ss2 = "";
   let scs2 = "";
-  if(m2 < 10)
-    sm2 += "0";
-  if(s2 < 10)
-    ss2 += "0";
-  if(cs2 < 10)
-    scs2 += "0";
+  if(m2 < 10) sm2 += "0";
+  if(s2 < 10) ss2 += "0";
+  if(cs2 < 10) scs2 += "0";
   sm2 += m2;
   ss2 += s2;
   scs2 += cs2;
   document.getElementById("bestTime").innerHTML = h2 + ":" + sm2 + ":" + ss2 + "." + scs2;
-  
-  if(game.n.gt("10^^1e16"))
-    outerTab("end");
+
+  if(game.n.gt("10^^1e16")) outerTab("end");
   else outerTab("normal");
 }
 
-
 function hardReset() {
-  game.au[0] = false;
-  game.au[1] = false;
-  game.au[2] = false;
-  game.ta[1] = false;
-  game.ta[2] = false;
+  game.au = [false, false, false];
+  game.ta = [0, false, false];
   game.ru0P = new OmegaNum(4);
-  game.ru[0] = new OmegaNum(0);
-  game.ru[1] = new OmegaNum(0);
-  game.ru[2] = 0;
-  game.ru[3] = new OmegaNum(9);
-  game.ruC[0] = new OmegaNum(5000);
-  game.ruC[1] = new OmegaNum(1000);
+  game.ru = [new OmegaNum(0), new OmegaNum(0), 0, new OmegaNum(9)];
+  game.ruC = [new OmegaNum(5000), new OmegaNum(1000), 0, new OmegaNum("eee10")];
   game.ru2C = [new OmegaNum(1e10), new OmegaNum(1e20), new OmegaNum(1e30), new OmegaNum(1e40), new OmegaNum(1e55), new OmegaNum(1e80), new OmegaNum(1e150), new OmegaNum(OmegaNum.pow(2,1024)), new OmegaNum("e1000"), new OmegaNum("e6969")];
-  game.ruC[3] = new OmegaNum("eee10");
-  game.u[0] = false;
-  game.u[1] = false;
-  game.u[2] = false;
-  game.u[3] = false;
+  game.u = [false, false, false, false];
   game.mm = new OmegaNum(0);
   game.m2 = new OmegaNum(0);
   game.m1 = new OmegaNum(0);
@@ -1318,9 +1288,10 @@ function hardReset() {
   game.nT = new OmegaNum(10);
   game.theme = 0;
   game.frames = 0;
+  game.speedrunTime = 0;
   game.end = false;
   
-  tab('dimTab');
+  // FIXED: Removed tab('dimTab') from here so it doesn't kick you out of the Speedrun menu
   scrollNextMessage();
   updateEverything();
 }
@@ -1335,12 +1306,9 @@ function resetBestTime() {
   let sm2 = "";
   let ss2 = "";
   let scs2 = "";
-  if(m2 < 10)
-    sm2 += "0";
-  if(s2 < 10)
-    ss2 += "0";
-  if(cs2 < 10)
-    scs2 += "0";
+  if(m2 < 10) sm2 += "0";
+  if(s2 < 10) ss2 += "0";
+  if(cs2 < 10) scs2 += "0";
   sm2 += m2;
   ss2 += s2;
   scs2 += cs2;
@@ -1351,5 +1319,29 @@ function resetBestTime() {
 
 load();
 updateEverything();
-tab('dimTab');
+// If we just loaded a fresh mod page, keep them on the default tab
+if (game.nT.lte(10)) tab('dimTab'); 
 scrollNextMessage();
+
+function setupIL(level) {
+  if(!confirm("Are you sure? This wipes your save to start the IL!")) return;
+  
+  hardReset(); 
+  
+  if(level === 'Discovery') {
+    game.n = new OmegaNum("1e100");
+    game.nT = new OmegaNum("1e100");
+  } else if(level === 'Antimatter') {
+    game.n = new OmegaNum("e10000");
+    game.dp = new OmegaNum(10);
+  } else if(level === 'Matter') {
+    game.dp = new OmegaNum("3e10");
+    game.a = new OmegaNum("1e1000");
+    game.u[2] = true; 
+  }
+  
+  game.speedrunTime = 0; 
+  save();
+  location.reload(); 
+}
+
