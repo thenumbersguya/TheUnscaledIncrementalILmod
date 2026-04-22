@@ -10,266 +10,126 @@
     <script type="text/javascript" src="game.js" defer></script>
 </head>
 <body>
-<div id="normal">
-    No Cost Scaling! (Original game by SuperSpruce) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    Time played: <span id="timePlayed">0:00:00</span> &nbsp;&nbsp;&nbsp;&nbsp; 
-    Best time: <span id="bestTime">1000:00:00</span>
-    <div id="game">
-        <div id="news">.</div>
-    </div>
-    <br><br><br>
-    <div id="navigateButtons">
-        <button class="bt" onclick="tab('dimTab')">Null Matter</button>
-        <button class="b1" id="disB" onclick="tab('prestigeTab1.1')">Discovery</button>
-        <button class="b2" id="dimB2" onclick="tab('dimTab2')">Antimatter</button>
-        <button class="b3" id="dimB3" onclick="tab('dimTab3')">Matter</button>
-        <button class="bt" onclick="tab('optionsTab')">Options</button>
-        <button class="bt" onclick="tab('changelogTab')">Changelog</button>
-        <button class="bt" style="color: #00ff00; font-weight: bold;" onclick="tab('speedrunTab')">Speedrun ILs</button>
-    </div>
-    <br><br><br>
-    <co class="null0"> You have </co> 
-    <co class="null1"> <span id="Dn">10</span> </co>
-    <co class="null0"> null matter. </co>
-    <br><br><br>
-    <div id="dimTab">
-        <button class="mN" onclick="Max()">Max all dimensions</button>
-        <br><br>
-        You have <span id="Dd1">0</span> first dimensions. 
-        <button class="buy" onclick="buyD1()">Buy 1</button> 
-        <button class="buyM" onclick="maxD1()">Buy Max</button> 
-        Cost: 10 null matter, Multiplier: <span id="Ddm1">1</span>x 
-        <br>
-        You have <span id="Dd2">0</span> second dimensions. 
-        <button class="buy" onclick="buyD2()">Buy 1</button> 
-        <button class="buyM" onclick="maxD2()">Buy Max</button> 
-        Cost: 1e10 null matter, Multiplier: <span id="Ddm2">1</span>x 
-        <br>
-        You have <span id="Dd3">0</span> third dimensions. 
-        <button class="buy" onclick="buyD3()">Buy 1</button> 
-        <button class="buyM" onclick="maxD3()">Buy Max</button> 
-        Cost: E10#2 null matter, Multiplier: <span id="Ddm3">1</span>x 
-        <br><br><br><br>
-        Automate the clicking of the Max all dimensions button (25/s)<br>
-        <button id="aup0" class="aNA" onclick="buyAu0()">Purchased:<span id="Dau0">false</span></button> 
-        Cost: 1.80e308 null matter<br>
-    </div>
-    <div id="prestigeTab1.1">
-        Each Discovery Point multiplies each dimension's production by an additive 100% each, before additional boosts.<br>
-        <button id="resetButton" class="cp1" onclick="p1()">Reset your progress for Discovery Points!</button><br>
-        You can get <span id="DdpP">0</span> Discovery Points if you make a Discovery now.<br><br>
-        <co class="di0"> You have <co class="di1"><span id="Ddp">0</span></co> Discovery Points, giving a <span id="Dde">0</span>x multiplier to each dimension's production. </co>
-        <br><br><br>
-        Raise the boost from Discovery Points to the power of <span id="Dru0P">4</span>.<br>
-        <button id="du01" class="du1" onclick="buyRu0()">Buy 1</button> 
-        <button id="du0M" class="du1" onclick="buyRu0M()">Buy Max</button> 
-        Cost: <span id="Dru0C">5000</span> Discovery Points<br>
-        Purchased <span id="Dru0">0</span> times. 
-        <br><br>
-        Retroactively add the boost factor of the above upgrade by 2. <br>
-        <button id="du02" class="du1" onclick="buyRu2()"><span id="Dru2M">Buy</span></button> 
-        Cost: <span id="Dru2C">1e10</span> Discovery Points 
-        <br><br><br>
-        Multiply your discovery point gain by log(discovery points).<br>
-        <button id="du03" class="du1" onclick="buyU0()">Purchased: <span id="Du0">false</span></button> 
-        Cost: 1e100 Discovery Points 
-        <br><br><br>
-        Make the null matter automation upgrade not be reset on discovery.<br>
-        <button id="du04" class="du1" onclick="buyU1()">Purchased: <span id="Du1">false</span></button> 
-        Cost: 1e200 Discovery Points 
-        <br>
-        <div id="prestigeTab1.2">
-            <br><br><br><br>
-            Buff the matter effect from x to (null matter)^^x.<br>
-            <button id="du05" class="du1" onclick="buyU2()">Purchased: <span id="Du2">false</span></button> 
-            Cost: E1#100 Discovery Points 
-            <div id="prestigeTab1.3">
-                <br><br><br>
-                Change the antimatter effect from multiplying discovery point gain to tetrating discovery point gain.<br>
-                <button id="du06" class="du1" onclick="buyU3()">Purchased: <span id="Du3">false</span></button> 
-                Cost: 3^^^3 Discovery Points
-            </div>
+    <div id="normal">
+        No Cost Scaling! (Original game by SuperSpruce) 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time played: <span id="timePlayed">0:00:00</span> 
+        &nbsp;&nbsp;&nbsp;&nbsp; Best time: <span id="bestTime">1000:00:00</span>
+        
+        <div id="game">
+            <div id="news">.</div>
         </div>
-    </div>
- 
-    <button class = "bM" onclick = "buyM1()">Buy 1</button>
-    <button class = "bMM" onclick = "maxM1()">Buy Max</button> Cost: 10 matter
-      <br>
-    You have <span id = "Dm2">0</span> second matter dimensions. 
-    <button class = "bM" onclick = "buyM2()">Buy 1</button>
-    <button class = "bMM" onclick = "maxM2()">Buy Max</button> Cost: 1e10 matter
-      <br><br><br>
-      Automate the clicking of the Max all matter dimensions button (25/s) (Togglable) <br>
-      <button id = "aup2" class = "aNA" onclick = "buyAu2()">Purchased: <span id = "Dau2">false</span></button> <button  id = "auT2" class = "aT0" onclick = "toggleAu2()">Is toggled on: <span id = "Dta2">false</span></button> <br>
-      Cost: 1.80e308 matter
-      <br><br><br>
-      There is a <span id = "Dmm">0</span>x multiplier to all matter dimensions.<br>
-      Formula: 1e7^(1e5^(superLog(antimatter) - 3.2)) - 1
-      
-      <div id="speedrunTab" style="display:none">
-    <h2 style="color:#00ff00">Speedrun Individual Levels</h2>
-    <p>Starting an IL will <b>HARD RESET</b> your save and teleport you to the milestone.</p>
-    
-    <div style="border: 2px solid white; padding: 15px; display: inline-block;">
-        <button class="buy" onclick="setupIL('Normal Run')">Start at a Normal Run</button>
-        <p>Pre-sets: 10 Null Matter | Goal: First Discovery</p>
-        
-        <button class="buy" onclick="setupIL('Antimatter')">Start at Antimatter</button>
-        <p>Pre-sets: e10,000 Null Matter | Goal: Unlock Antimatter</p>
-        
-        <button class="buy" onclick="setupIL('Matter')">Start at Matter</button>
-        <p>Pre-sets: 3e10 DP + 1e1000 Antimatter | Goal: Reach the Ending</p>
-    </div>
-    <br><br>
-    <p style="font-size: 10px;">Modded for Speedrun.com by thenumbersguya</p>
-</div>
 
-      
-    </div>
-    <div id = "optionsTab">
-			
-	<button onclick = "save()">Manual save</button> <br><br>
-      <button onclick = "changeTheme()">Change Color Theme</button> Doesn't work currently.<br><br><br>
-	<button id = "hr" class = "hr1" onclick = "hardReset()">HARD RESET</button> <co class = "hrt">WARNING: THIS BUTTON HARD RESETS YOUR SAVE.</co>
-			<br><br><br>
-			For the coders out there: If you want to mod this game, you are allowed to do so as long as you don't name it the exact same thing (The Unscaled Incremental NG+ and the like are fine) and preferably credit me for the original.
-      <br><br>
-      This game is on the Incremental Game Plaza. (https://plaza.dsolver.ca) You are encoraged to rate it and give genuine feedback on it if you want!
-			<br><br><br>
-      Credit to Hevipelle and Aarex for some of the news tickers. And credit to Hevipelle for the news ticker code.
-      
-      
-		</div>
-		<div id="changelogTab" style="display:none">
-			3-21-2020, v0.0 beta: Created game.
-		<br>  3-21-2020, v0.1 beta: Stuff now happens when you click on the buttons, except the individual buy max buttons.
-		<br>	3-21-2020, v0.2 beta: Tons of bugfixes; saving now works.
-		<br>	3-21-2020, v0.3 beta: Fixed the bug where the individual buy max buttons didn't work.
-		<br>	3-21-2020, v0.4 beta: No more floating point errors on the screen!
-		<br>	3-21-2020, v0.5 beta: Added this changelog, added tabs, nerfed 2nd dimension by 5x.
-    <br>	3-22-2020, v0.6 beta: Fixed the bug where saving didn't work, and saving is better now.  <co class = "cc1-0">
-<br><br>  3-22-2020, v1.0: Added discovery! Discover what it does! You can now reach e10000 null matter!  </co><co class = "cc1-1">
-    <br>  3-25-2020, v1.1: Added an automation upgrade, a repeatable discovery upgrade, and fixed some bugs.  </co><co class = "cc1-2">
-    <br>  3-26-2020, v1.2: Added antimatter dimensions!
-    <br>  3-26-2020, v1.2.1: Fixed a bug where the max all antimatter dimensions button didn't work.  </co><co class = "cc1-3">
-    <br>  3-27-2020, v1.3: Added two new upgrades, the automator for the antimatter dimensions, and did some balancing and bugfixing.  </co><co class = "cc1-4">
-    <br>  3-28-2020, v1.4: Added a new upgrade, and changed the font from meme font (impact) to monospaced font (courier).  </co><co class = "cc1-5">
-    <br>  3-28-2020, v1.5: Added matter! And added an OP upgrade! And fixed a lot of bugs.  
-    <br>  3-30-2020, v1.5.1: Fixed a display oversight where the listed formula was incorrect.  </co><co class = "cc1-6">
-    <br>  3-30-2020, v1.6: Changed some costs for high tiers of the upgrade that boosts the other, made the matter cost more expensive, and fixed some more bugs.  </co><co class = "cc1-7">
-    <br>  4-12-2020, v1.7: Added matter dimensions and an upgrade that buffs the matter effect!
-    <br>  4-19-2020, v1.7.1: Matter automation now works and other bugfixes, matter effect and matter dimension multiplier are buffed.
-    <br>  4-20-2020, v1.7.2: Added 3rd Antimatter Dimension.  </co><co class = "cc1-8">
-    <br>  6-22-2020, v1.8: Better graphics, and added a buggy news ticker!  
-    <br>  6-26-2020, v1.8.1: Changes to the second repeatable discovery upgrade once it reaches e6969, reduced matter requirement from eee25 to eee10 discovery points.
-    <br>  6-26-2020, v1.8.2: Hover effects for buttons!  
-    <br>  7-9-2020, v1.8.3: More buttons are now prettified.
-    <br>  7-11-2020, v1.8.4: Conditional coloring on some buttons!
-    <br>  7-22-2020, v1.8.5: More conditional coloring!
-      </co><co class = "cc1-9">
-    <br>  7-23-2020, v1.9: All of the buttons have been colored in some way, added an upgrade at 3^^^3 DP, and tons of balancing changes post-matter. Also there's a game timer now! And a few more news tickers.
-      </co><co class = "cc2-0i">
-<br><br>  7-23-2020, v2.0: Added an end screen for when you reach the end of the game! Yes, the end of the game, as there will be no more content-adding updates to this game after this update. It displays your time and best time, if you want to speedrun this game. Also the number formatting was improved.
-      </co><co class = "cc2-0">
-    <br>  8-13-2020, v2.0.1: Fixed a bug where your end time in the current run would keep increasing after beating the game, and a bug where time of x:xx:xx.0y would be displayed as x:xx:xx.y.
-    <br>  9-7-2020, v2.0.2: Added a link to the Incremental Games Plaza.
-    <br>  4-21-2026, v1 of IL mod: Added the IL mod tab, and added the first two ILs.
-      </div>
-			
-			
-		</div>
-      </div>
+        <br><br><br>
+        <div id="navigateButtons">
+            <button class="bt" onclick="tab('dimTab')">Null Matter</button>
+            <button class="b1" id="disB" onclick="tab('prestigeTab1.1')">Discovery</button>
+            <button class="b2" id="dimB2" onclick="tab('dimTab2')">Antimatter</button>
+            <button class="b3" id="dimB3" onclick="tab('dimTab3')">Matter</button>
+            <button class="bt" onclick="tab('optionsTab')">Options</button>
+            <button class="bt" onclick="tab('changelogTab')">Changelog</button>
+            <button class="bt" style="color: #00ff00; font-weight: bold;" onclick="tab('speedrunTab')">Speedrun ILs</button>
+        </div>
+
+        <br><br><br>
+        <co class="null0"> You have </co>
+        <co class="null1"> <span id="Dn">10</span> </co>
+        <co class="null0"> null matter. </co>
+        <br><br><br>
+
+        <!-- NULL MATTER TAB -->
+        <div id="dimTab">
+            <button class="mN" onclick="Max()">Max all dimensions</button>
+            <br><br>
+            You have <span id="Dd1">0</span> first dimensions. <button class="buy" onclick="buyD1()">Buy 1</button> <button class="buyM" onclick="maxD1()">Buy Max</button> Cost: 10 null matter, Multiplier: <span id="Ddm1">1</span>x <br>
+            You have <span id="Dd2">0</span> second dimensions. <button class="buy" onclick="buyD2()">Buy 1</button> <button class="buyM" onclick="maxD2()">Buy Max</button> Cost: 1e10 null matter, Multiplier: <span id="Ddm2">1</span>x <br>
+            You have <span id="Dd3">0</span> third dimensions. <button class="buy" onclick="buyD3()">Buy 1</button> <button class="buyM" onclick="maxD3()">Buy Max</button> Cost: E10#2 null matter, Multiplier: <span id="Ddm3">1</span>x <br><br><br><br>
+            Automate the clicking of the Max all dimensions button (25/s)<br>
+            <button id="aup0" class="aNA" onclick="buyAu0()">Purchased:<span id="Dau0">false</span></button> Cost: 1.80e308 null matter<br>
+        </div>
+
+        <!-- DISCOVERY TAB -->
+        <div id="prestigeTab1.1" style="display:none">
+            Each Discovery Point multiplies each dimension's production by an additive 100% each.<br>
+            <button id="resetButton" class="cp1" onclick="p1()">Reset your progress for Discovery Points!</button><br>
+            You can get <span id="DdpP">0</span> Discovery Points if you make a Discovery now.<br><br>
+            <co class="di0"> You have <span id="Ddp">0</span> Discovery Points, giving a <span id="Dde">0</span>x multiplier. </co>
+            <br><br>
+            Raise boost power to <span id="Dru0P">4</span>.<br>
+            <button id="du01" class="du1" onclick="buyRu0()">Buy 1</button> <button id="du0M" class="du1" onclick="buyRu0M()">Buy Max</button> Cost: <span id="Dru0C">5000</span> DP<br>
+            <br>
+            <button id="du02" class="du1" onclick="buyRu2()"><span id="Dru2M">Buy</span></button> Retroactive Boost. Cost: <span id="Dru2C">1e10</span> DP
+            <br><br>
+            <button id="du03" class="du1" onclick="buyU0()">Log Boost (1e100 DP)</button>
+            <br>
+            <button id="du04" class="du1" onclick="buyU1()">Keep Automation (1e200 DP)</button>
+        </div>
+
+        <!-- ANTIMATTER TAB -->
+        <div id="dimTab2" style="display:none">
+            <br><br>
+            Buff the matter effect from x to (null matter)^^x.<br>
+            <button id="du05" class="du1" onclick="buyU2()">Purchased: <span id="Du2">false</span></button> Cost: E1#100 DP
+            <br><br>
+            Change antimatter effect to tetration.<br>
+            <button id="du06" class="du1" onclick="buyU3()">Purchased: <span id="Du3">false</span></button> Cost: 3^^^3 DP
+        </div>
+
+        <!-- MATTER TAB -->
+        <div id="dimTab3" style="display:none">
+            <button class="bM" onclick="buyM1()">Buy 1</button> <button class="bMM" onclick="maxM1()">Buy Max</button> Cost: 10 matter <br>
+            You have <span id="Dm2">0</span> second matter dimensions. <button class="bM" onclick="buyM2()">Buy 1</button> <button class="bMM" onclick="maxM2()">Buy Max</button> Cost: 1e10 matter <br><br>
+            Automate Max Matter Button (25/s) <br>
+            <button id="aup2" class="aNA" onclick="buyAu2()">Purchased: <span id="Dau2">false</span></button> 
+            <button id="auT2" class="aT0" onclick="toggleAu2()">Is toggled: <span id="Dta2">false</span></button> <br>
+            Cost: 1.80e308 matter <br><br>
+            Multiplier: <span id="Dmm">0</span>x <br>
+            Formula: 1e7^(1e5^(superLog(antimatter) - 3.2)) - 1 
+        </div>
+
+        <!-- OPTIONS TAB -->
+        <div id="optionsTab" style="display:none">
+            <button onclick="save()">Manual save</button> <br><br>
+            <button id="hr" class="hr1" onclick="hardReset()">HARD RESET</button> <br><br>
+            <button id="hr0" class="hr1" onclick="resetBestTime()">Reset your best time</button> <br><br>
+            <p>Credits: SuperSpruce, Naruyoko, Patcail, Hevipelle, Aarex, Yhvr, Reinhardt, Jacorb, Yahtzee Master, TheTastyPi</p>
+        </div>
+
+        <!-- CHANGELOG TAB -->
+        <div id="changelogTab" style="display:none">
+            <h3>Changelog</h3>
+            4-21-2026, v1: Added IL mod tab! <br>
+            7-23-2020, v2.0: Added end screen. <br>
+            3-21-2020, v0.0: Game Created.
+        </div>
+
+        <!-- SPEEDRUN TAB -->
+        <div id="speedrunTab" style="display:none; text-align: center; padding: 20px;">
+            <h2 style="color:#00ff00">Individual Level Shortcuts</h2>
+            <p>Warning: This will hard reset your current save!</p>
+            <button class="buy" onclick="setupIL('Normal Run')">Jump to Normal Run</button> <br><br>
+            <button class="buy" onclick="setupIL('Antimatter')">Jump to Antimatter</button> <br><br>
+            <button class="buy" onclick="setupIL('Matter')">Jump to Matter</button>
+        </div>
+    </div> <!-- END OF NORMAL DIV -->
+
+    <!-- END SCREEN -->
     <div id="end" style="display:none">
-        <co class="e1">Congratulations! You beat the game in </co>
-        <span id="time" class="e">x:xx:xx</span>!
-        <br><br>
+        <h1 class="e1">Congratulations!</h1>
+        <p>You beat the game in <span id="time" class="e">x:xx:xx</span>!</p>
+        <p>Best Time: <span id="time2"></span></p>
         <button class="aT1" onclick="hardReset()">Play again!</button>
     </div>
-      <br><br><br><br>
-      <button id = "hr0" class = "hr1" onclick = "resetBestTime()">Reset your best time</button>
-      <br><br><br><br><br><br>
-      <co class = "null0">Credits:</co> <br>
-      <co class = "cc1-9">Game Developer: SuperSpruce</co> <br>
-      Creator of OmegaNum.js: Naruyoko <br>
-      Creator of the tournament that inspired me to make this game: Patcail <br>
-      Creator of the news ticker code: Hevipelle <br>
-      News tickers makers: SuperSpruce, Hevipelle, Aarex <br>
-      People who helped me with the coding: Yhvr, Reinhardt, Jacorb, Yahtzee Master, TheTastyPi
-      <br><br><br>
-      For the coders out there: If you want to mod this game, you are allowed to do so as long as you don't name it the exact same thing (The Unscaled Incremental NG+ and the like are fine) and preferably credit me for the original. (like me making this IL mod and crediting SuperSpruce for the original game)
-    </div>
 
+    <!-- GHOST IDs (Hidden) -->
     <div style="display:none">
-    <!-- These need to be buttons because the JS sets their .className -->
-    <button id="auT1"></button>
-    <button id="auT2"></button>
-    <button id="ba"></button>
-    <button id="bm"></button>
-    <button id="du01"></button>
-    <button id="du02"></button>
-    <button id="du03"></button>
-    <button id="du04"></button>
-    <button id="du05"></button>
-    <button id="du06"></button>
-    <button id="du0M"></button>
-    <button id="aup0"></button>
-    <button id="aup1"></button>
-    <button id="aup2"></button>
-    
-    <!-- These are fine as spans -->
-    <span id="DruC1"></span>
-    <span id="DruC3"></span>
-    <span id="Dme0"></span>
-    <span id="Dah"></span>
-    <span id="Dam"></span>
-    <span id="Dae"></span>
-    <span id="Dta1"></span>
-    <span id="Dta2"></span>
-    <span id="Dru2M"></span>
-</div>
-
-    <!-- YOUR SPEEDRUN MOD TAB -->
-     <div id="speedrunTab" style="display:none; text-align: center; padding: 20px;">
-        <h2 style="color:#00ff00">Individual Level Shortcuts</h2>
-        <p>Warning: This will hard reset your current save!</p>
-        <button class="buy" onclick="setupIL('Normal Run')">Normal Run</button><br><br>
-        <button class="buy" onclick="setupIL('Discovery')">Jump to Discovery (1e100)</button><br><br>
-        <button class="buy" onclick="setupIL('Matter')">Jump to Matter (Late Game)</button>
+        <span id="DruC1"></span><span id="DruC3"></span><span id="Dme0"></span>
+        <span id="Dah"></span><span id="Dam"></span><span id="Dae"></span>
+        <span id="Dta1"></span><span id="Dta2"></span><span id="Dru2M"></span>
+        <span id="Dme"></span><span id="Da"></span><span id="Da1"></span>
+        <span id="Da2"></span><span id="Da3"></span><span id="Dm"></span>
+        <span id="Dm1"></span><button id="auT1"></button><button id="ba"></button>
+        <button id="bm"></button>
     </div>
-
-    <div style="display:none">
-    <div id="dimTab"></div>
-    <div id="prestigeTab1.1"></div>
-    <div id="dimTab2"></div>
-    <div id="dimTab3"></div>
-    <div id="optionsTab"></div>
-    <div id="changelogTab"></div>
-</div>
-
-<div style="display:none">
-    <!-- Antimatter IDs -->
-    <span id="Da"></span><span id="Dae"></span><span id="Dah"></span>
-    <span id="Da1"></span><span id="Da2"></span><span id="Da3"></span>
-    <span id="Dau1"></span><span id="Dta1"></span><span id="Dam"></span>
-    
-    <!-- Matter IDs -->
-    <span id="Dm"></span><span id="Dme"></span><span id="Dme0"></span>
-    <span id="Dm1"></span><span id="Dm2"></span><span id="Dmm"></span>
-    <span id="Dau2"></span><span id="Dta2"></span>
-    
-    <!-- Tab IDs to prevent tab() crashes -->
-    <div id="dimTab2"></div><div id="dimTab3"></div>
-    <div id="optionsTab"></div><div id="changelogTab"></div>
-</div>
-
-<!-- YOUR SPEEDRUN MOD TAB -->
-<div id="speedrunTab" style="display:none; text-align: center; padding: 20px;">
-    <h2 style="color:#00ff00">Individual Level Shortcuts</h2>
-    <button class="buy" onclick="setupIL('Normal Run')">Jump to Normal Run, can be used to speedrun the game normally</button>
-    <br><br>
-    <button class="buy" onclick="setupIL('Antimatter')">Jump to Antimatter (Mid Game)</button>
-    <br><br>
-    <button class="buy" onclick="setupIL('Matter')">Jump to Matter (Late Game)</button>
-</div>
-	</body>
+</body>
 </html>
+
