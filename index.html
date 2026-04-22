@@ -111,8 +111,8 @@
     <p>Starting an IL will <b>HARD RESET</b> your save and teleport you to the milestone.</p>
     
     <div style="border: 2px solid white; padding: 15px; display: inline-block;">
-        <button class="buy" onclick="setupIL('Discovery')">Start at Discovery</button>
-        <p>Pre-sets: 1e100 Null Matter | Goal: First Discovery</p>
+        <button class="buy" onclick="setupIL('Normal Run')">Start at a Normal Run</button>
+        <p>Pre-sets: 10 Null Matter | Goal: First Discovery</p>
         
         <button class="buy" onclick="setupIL('Antimatter')">Start at Antimatter</button>
         <p>Pre-sets: e10,000 Null Matter | Goal: Unlock Antimatter</p>
@@ -140,8 +140,7 @@
       
       
 		</div>
-		<div id = "changelogTab">
-			
+		<div id="changelogTab" style="display:none">
 			3-21-2020, v0.0 beta: Created game.
 		<br>  3-21-2020, v0.1 beta: Stuff now happens when you click on the buttons, except the individual buy max buttons.
 		<br>	3-21-2020, v0.2 beta: Tons of bugfixes; saving now works.
@@ -175,16 +174,17 @@
     <br>  8-13-2020, v2.0.1: Fixed a bug where your end time in the current run would keep increasing after beating the game, and a bug where time of x:xx:xx.0y would be displayed as x:xx:xx.y.
     <br>  9-7-2020, v2.0.2: Added a link to the Incremental Games Plaza.
     <br>  4-21-2026, v1 of IL mod: Added the IL mod tab, and added the first two ILs.
-      </co>
+      </div>
 			
 			
 		</div>
       </div>
-    <div id = "end">
-      <co class = "e1">Congratulations! You have beat The Unscaled Incremental in </co><co class = "e2"><span id = "time" class = "e">x:xx:xx</span></co><co class = "e1">!</co> <br><br>
-      <co class = "e3">Your best time is now </co><co class = "e4"><span id = "time2" class = "e"></span></co><co class = "e3">.</co>
-      <br><br><br><br>
-      <button class = "aT1" onclick = "hardReset()">Play this game again from the beginning!</button> Try for a faster time!
+    <div id="end" style="display:none">
+        <co class="e1">Congratulations! You beat the game in </co>
+        <span id="time" class="e">x:xx:xx</span>!
+        <br><br>
+        <button class="aT1" onclick="hardReset()">Play again!</button>
+    </div>
       <br><br><br><br>
       <button id = "hr0" class = "hr1" onclick = "resetBestTime()">Reset your best time</button>
       <br><br><br><br><br><br>
@@ -209,11 +209,11 @@
     </div>
 
     <!-- YOUR SPEEDRUN MOD TAB -->
-    <div id="speedrunTab" style="display:none; text-align: center; padding: 20px;">
+     <div id="speedrunTab" style="display:none; text-align: center; padding: 20px;">
         <h2 style="color:#00ff00">Individual Level Shortcuts</h2>
         <p>Warning: This will hard reset your current save!</p>
-        <button class="buy" onclick="setupIL('Discovery')">Jump to Discovery (1e100)</button>
-        <br><br>
+        <button class="buy" onclick="setupIL('Normal Run')">Normal Run</button><br><br>
+        <button class="buy" onclick="setupIL('Discovery')">Jump to Discovery (1e100)</button><br><br>
         <button class="buy" onclick="setupIL('Matter')">Jump to Matter (Late Game)</button>
     </div>
 
@@ -247,8 +247,9 @@
     <h2 style="color:#00ff00">Individual Level Shortcuts</h2>
     <button class="buy" onclick="setupIL('Normal Run')">Jump to Normal Run, can be used to speedrun the game normally</button>
     <br><br>
+    <button class="buy" onclick="setupIL('Antimatter')">Jump to Antimatter (Mid Game)</button>
+    <br><br>
     <button class="buy" onclick="setupIL('Matter')">Jump to Matter (Late Game)</button>
 </div>
 	</body>
 </html>
-
