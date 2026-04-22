@@ -1328,15 +1328,15 @@ function setupIL(level) {
   
   hardReset(); 
   
-  if(level === 'Discovery') {
-    game.n = new OmegaNum("1e100");
-    game.nT = new OmegaNum("1e100");
+  if(level === 'Normal Run') {
+    game.n = new OmegaNum("0");
+    game.nT = new OmegaNum("0");
   } else if(level === 'Antimatter') {
     game.n = new OmegaNum("e10000");
     game.dp = new OmegaNum(10);
   } else if(level === 'Matter') {
-    game.dp = new OmegaNum("3e10");
-    game.a = new OmegaNum("1e1000");
+    game.dp = new OmegaNum("1e7000");
+    game.a = new OmegaNum("1e308");
     game.u[2] = true; 
   }
   
@@ -1344,4 +1344,3 @@ function setupIL(level) {
   save();
   location.reload(); 
 }
-
