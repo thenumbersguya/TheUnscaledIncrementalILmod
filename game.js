@@ -1,3 +1,13 @@
+// This function stops the "null" errors by checking if the ID exists first!
+function update(id, content, type = "innerHTML") {
+    let el = document.getElementById(id);
+    if (el) {
+        if (type === "innerHTML") el.innerHTML = content;
+        if (type === "style") el.style.display = content;
+        if (type === "className") el.className = content;
+    }
+}
+
 game = {
   n: new OmegaNum(10),  //null matter
   nT: new OmegaNum(10),  //total null matter made
