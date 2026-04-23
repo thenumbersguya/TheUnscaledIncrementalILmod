@@ -44,6 +44,8 @@ game = {
 
 
 
+
+
 function changeTheme() {
   if(game.theme > 0) {
     game.theme = 0;
@@ -1339,11 +1341,11 @@ function setupIL(level) {
   hardReset(); 
   
   if(level === 'Normal Run') {
-    game.n = new OmegaNum("0");
-    game.nT = new OmegaNum("0");
+    game.n = new OmegaNum("10");
+    game.nT = new OmegaNum("10");
   } else if(level === 'Antimatter') {
     game.n = new OmegaNum("e10000");
-    game.dp = new OmegaNum(10);
+    game.dp = new OmegaNum(1e6);
   } else if(level === 'Matter') {
     game.dp = new OmegaNum("1e7000");
     game.a = new OmegaNum("1e308");
