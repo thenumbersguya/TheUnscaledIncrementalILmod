@@ -1,3 +1,71 @@
+function setupIL(level) {
+    if(!confirm("Are you sure? This wipes your save to start the IL!")) return;
+    hardReset();
+    
+    if(level === 'Normal Run') {
+        // Standard start: Reset everything to base values
+        game.n = new OmegaNum("10");
+        game.nT = new OmegaNum("10");
+    } 
+    
+    else if(level === 'Antimatter') {
+        // Unlock threshold: e2000 Null Matter (n)
+        game.n = new OmegaNum("1e2000"); 
+        game.nT = new OmegaNum("1e2000");
+        
+        // Resources: 2500 DP to allow buying AM twice (+1k scaling)
+        game.dp = new OmegaNum(2500); 
+        game.am = new OmegaNum(0); 
+        
+        // Upgrades: Pre-buy one level of the ^4 DP upgrade
+        game.ru = new OmegaNum(1); 
+        game.ruC = new OmegaNum(1000); // AM buy cost starts at 1k
+        
+        // Effects: Base Antimatter Effect (ae)
+        game.ae = new OmegaNum(1); 
+        
+        // Force UI Visibility
+        document.getElementById('disB').style.display = 'inline-block';
+    } 
+    
+    else if(level === 'Matter') {
+        // Core resources
+        game.n = new OmegaNum("1e2000"); 
+        game.nT = new OmegaNum("1e2000");
+        game.dp = new OmegaNum("1e7000"); // e7k starting Discovery Points
+        
+        // Starting with 2^1024 Antimatter
+        game.am = OmegaNum.pow(2, 1024);
+        // Calculate ae based on log(1+am)^3
+        game.ae = OmegaNum.add(1, game.am.add(1).log10().pow(3));
+
+        // Prestige Upgrades: 200 levels of ^4 upgrade
+        game.ru = new OmegaNum(200); 
+        // Cost scaling ceiling at e6969
+        game.ruC = new OmegaNum("e6969"); 
+
+        // Discovery Upgrades: log(DP) multiplier and Automation Protection
+        game.u = true; // Multiply DP gain by log(DP)
+        game.u = true; // Automation protection
+        
+        // Matter initialization
+        game.m = new OmegaNum(0);
+        game.me = new OmegaNum(1);
+
+        // Force UI Visibility for all tabs
+        document.getElementById('disB').style.display = 'inline-block';
+        document.getElementById('prestigeTab1.2').style.display = 'inline-block';
+        document.getElementById('dimB2').style.display = 'inline-block';
+        document.getElementById('dimB3').style.display = 'inline-block';
+    }
+    
+    game.speedrunTime = 0;
+    save();
+    location.reload();
+}
+
+
+
 // This function stops the "null" errors by checking if the ID exists first!
 function update(id, content, type = "innerHTML") {
     let el = document.getElementById(id);
